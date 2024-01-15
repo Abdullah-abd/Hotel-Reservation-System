@@ -22,19 +22,19 @@ public class Main {
                 int choice = scanner.nextInt();
                 switch (choice){
                     case 1:
-                        reserveRoom(connection, scanner, smt);
+                        reserveRoom( scanner, smt);
                         break;
                     case 2:
-                        viewReservation(connection, smt);
+                        viewReservation(smt);
                         break;
                     case 3:
-                        getRoom(connection, scanner, smt);
+                        getRoom( scanner, smt);
                         break;
                     case 4:
-                        updateReservation(connection, scanner, smt);
+                        updateReservation( scanner, smt);
                         break;
                     case 5:
-                        deleteReservation(connection, scanner, smt);
+                        deleteReservation( scanner, smt);
                         break;
 
                 }
@@ -46,7 +46,7 @@ public class Main {
         }
     }
 
-    private static void deleteReservation(Connection connection, Scanner scanner, Statement smt) {
+    private static void deleteReservation( Scanner scanner, Statement smt) {
         System.out.println("Enter id");
         int id = scanner.nextInt();
         String query = "DELETE FROM reservations WHERE reservation_id ="+ id;
@@ -62,7 +62,7 @@ public class Main {
         }
     }
 
-    private static void getRoom(Connection connection, Scanner scanner, Statement smt) {
+    private static void getRoom( Scanner scanner, Statement smt) {
         System.out.println("Enter Reservation id");
         int id = scanner.nextInt();
         System.out.println("Enter name");
@@ -84,7 +84,7 @@ public class Main {
         }
     }
 
-    private static void updateReservation(Connection connection, Scanner scanner, Statement smt) {
+    private static void updateReservation( Scanner scanner, Statement smt) {
         System.out.println("Enter Reservation id");
         int id = scanner.nextInt();
         System.out.println();
@@ -108,7 +108,7 @@ public class Main {
         }
     }
 
-    private static void viewReservation(Connection connection, Statement smt) {
+    private static void viewReservation( Statement smt) {
         String query = "select * from reservations";
         try {
             ResultSet rs = smt.executeQuery(query);
@@ -136,7 +136,7 @@ public class Main {
 
     }
 
-    private static void reserveRoom(Connection connection, Scanner scanner, Statement smt) throws SQLException {
+    private static void reserveRoom( Scanner scanner, Statement smt) throws SQLException {
         System.out.println();
         System.out.println("Enter name");
         String name = scanner.next();
