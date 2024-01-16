@@ -36,6 +36,12 @@ public class Main {
                     case 5:
                         deleteReservation( scanner, smt);
                         break;
+                    case 0:
+                        exitCode();
+                        return;
+                    default:
+                        System.out.println("Invalid choice please select choice from the above");
+                        break;
 
                 }
 
@@ -43,7 +49,21 @@ public class Main {
         }
         catch (SQLException e){
             System.err.println("connection failed!"+ e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+    }
+
+    private static void exitCode() throws InterruptedException {
+        System.out.print("Exiting System");
+        int i=3;
+        while(i>0){
+            System.out.print(".");
+            Thread.sleep(444);
+            i--;
+        }
+        System.out.println();
+        System.out.println("Thanks for using the system!");
     }
 
     private static void deleteReservation( Scanner scanner, Statement smt) {
